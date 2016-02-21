@@ -22,7 +22,7 @@ method run(:$max_threads, :$plot) {
 
     await do for ( 0..$width) -> Int $xcoord {
         start {
-            say ($xcoord/$width *100).Int ~'%' if $xcoord %% 10 and $plot;
+            say ($xcoord/$width *100).Int ~'%' if $xcoord %% 20 and $plot;
             for ( 0..$height-1) -> Int $ycoord {
 
                 my $ca = ($xcoord - $hwidth) / $width * $wid + $xcenter;
