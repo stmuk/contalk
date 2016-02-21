@@ -56,7 +56,6 @@ method run(:$max_threads, :$plot) {
 
     }
 
-    say  DateTime.now.Instant - $t0;
 
     if $plot {
 
@@ -83,6 +82,8 @@ method run(:$max_threads, :$plot) {
         }
 
         SDL_RenderPresent($render);
+
+        say  DateTime.now.Instant - $t0;
         prompt("wait..");
         SDL_Quit();
 
