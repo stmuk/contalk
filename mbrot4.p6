@@ -27,7 +27,7 @@ SDL_RenderPresent($render);
 
 my $t0 = DateTime.now.Instant;
 
-   $PROCESS::SCHEDULER=ThreadPoolScheduler.new(initial_threads => 0, max_threads => 3, uncaught_handler => Callable);
+$PROCESS::SCHEDULER=ThreadPoolScheduler.new(initial_threads => 0, max_threads => 3, uncaught_handler => Callable);
 
 
 my $c = Channel.new;
