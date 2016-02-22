@@ -67,6 +67,7 @@ sub plot($render, $x,$y,$c) {
     my ($c1, $c2, $c3) = $c; # XXX
     SDL_SetRenderDrawColor($render,$c1,$c2,$c3,0);
     SDL_RenderDrawPoint($render, $x, $y);
+SDL_RenderPresent($render);
 }
 
 sub mandelbrot(Complex $c) {
