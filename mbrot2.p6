@@ -1,3 +1,10 @@
+#!/usr/bin/env perl6
+
+#
+# XXX This code is broken for a presentation and doesn't generate a correct image
+# or (on some systems like Mac) doesn't work at all
+#
+
 use v6;
 use SDL2::Raw;
 
