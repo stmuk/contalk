@@ -87,8 +87,9 @@ method run(:$max_threads, :$plot) {
     await $plotting;
 
     SDL_RenderPresent($render);
+
     say DateTime.now.Instant-$t0 ~ "sec(s)";
-    
+    SDL_Quit();
 
 }
 
