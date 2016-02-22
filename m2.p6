@@ -12,5 +12,5 @@ if @*ARGS[0] {
     }
 } else {
     Mandel2.new.run(:max_threads(3));
-    prompt("Hit any key to quit..");
+    prompt "hit any key";
 }

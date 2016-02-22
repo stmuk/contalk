@@ -3,19 +3,19 @@ unit class Mandel2;
 use v6;
 use SDL2::Raw;
 
-my Int $width = 240;
-my Int $height = 192;
+my int $width = 240;
+my int $height = 192;
 
 my $hwidth = ($width /2).Int;
 my $hheight = ($height/2).Int;
 
-my Int $wid = 4;
-my (Int $xcenter, Int $ycenter) = (-1,0);
+my int $wid = 4;
+my (int $xcenter, int $ycenter) = (-1,0);
 
 constant SDL_WINDOW_SHOWN = 0x00000004;
 
 method run(:$max_threads, :$plot) {
-
+    my $t0 = DateTime.now.Instant;
     SDL_Init(VIDEO);
 
     my $window = SDL_CreateWindow("Mandelbrot",
@@ -27,10 +27,7 @@ method run(:$max_threads, :$plot) {
     SDL_RenderClear($render);
     SDL_RenderPresent($render);
 
-    my $t0 = DateTime.now.Instant;
-
-    $PROCESS::SCHEDULER=ThreadPoolScheduler.new(initial_threads => 0, max_threads => $max_threads, uncaught_handler => Callable);
-
+        $PROCESS::SCHEDULER=ThreadPoolScheduler.new(initial_threads => 0, max_threads => $max_threads, uncaught_handler => Callable);
 
     my $c = Channel.new;
 
@@ -48,10 +45,10 @@ method run(:$max_threads, :$plot) {
         }
     }
 
-    await do for ( 0..$width) -> Int $xcoord {
+    await do for ( 0..$width) -> int $xcoord {
 
         start {
-            for ( 0..$height-1) -> Int $ycoord {
+            for ( 0..$height-1) -> int $ycoord {
 
                 my $ca = ($xcoord - $hwidth) / $width * $wid + $xcenter;
                 my $cb = ($ycoord - $hheight) / $width * 1 * $wid + $ycenter;
@@ -91,7 +88,7 @@ method run(:$max_threads, :$plot) {
 
     SDL_RenderPresent($render);
     say DateTime.now.Instant-$t0 ~ "sec(s)";
-    SDL_Quit();
+    
 
 }
 
@@ -99,7 +96,7 @@ sub plot($render, $x,$y,$c) {
     my ($c1, $c2, $c3) = $c; # XXX
     SDL_SetRenderDrawColor($render,$c1,$c2,$c3,0);
     SDL_RenderDrawPoint($render, $x, $y);
-    SDL_RenderPresent($render);
+    #SDL_RenderPresent($render);
 }
 
 sub mandelbrot(Complex $c) {

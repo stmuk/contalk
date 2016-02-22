@@ -1,14 +1,14 @@
 use v6;
 use SDL2::Raw;
 
-my Int $width = 240;
-my Int $height = 192;
+my int $width = 240;
+my int $height = 192;
 
 my $hwidth = ($width /2).Int;
 my $hheight = ($height/2).Int;
 
-my Int $wid = 4;
-my (Int $xcenter, Int $ycenter) = (-1,0);
+my int $wid = 4;
+my (int $xcenter, int $ycenter) = (-1,0);
 
 constant SDL_WINDOW_SHOWN = 0x00000004;
 
@@ -25,9 +25,9 @@ SDL_RenderPresent($render);
 
 my $t0 = DateTime.now.Instant;
 
-for ( 0..$width) -> Int $xcoord {
+for ( 0..$width) -> int $xcoord {
 
-    for ( 0..$height-1) -> Int $ycoord {
+    for ( 0..$height-1) -> int $ycoord {
 
         my $ca = ($xcoord - $hwidth) / $width * $wid + $xcenter;
         my $cb = ($ycoord - $hheight) / $width * 1 * $wid + $ycenter;
@@ -67,7 +67,6 @@ sub plot($render, $x,$y,$c) {
     my ($c1, $c2, $c3) = $c; # XXX
     SDL_SetRenderDrawColor($render,$c1,$c2,$c3,0);
     SDL_RenderDrawPoint($render, $x, $y);
-    SDL_RenderPresent($render);
 }
 
 sub mandelbrot(Complex $c) {
