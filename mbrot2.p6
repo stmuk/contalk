@@ -19,6 +19,8 @@ my (int $xcenter, int $ycenter) = (-1,0);
 
 constant SDL_WINDOW_SHOWN = 0x00000004;
 
+my $t0 = DateTime.now.Instant;
+
 SDL_Init(VIDEO);
 
 my $window = SDL_CreateWindow("Mandelbrot",
@@ -30,7 +32,6 @@ SDL_SetRenderDrawColor($render, 0, 0,128, 0);
 SDL_RenderClear($render);
 SDL_RenderPresent($render);
 
-my $t0 = DateTime.now.Instant;
 
 #
 # don't do this .. SDL2 isn't thread safe

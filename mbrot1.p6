@@ -12,6 +12,8 @@ my (int $xcenter, int $ycenter) = (-1,0);
 
 constant SDL_WINDOW_SHOWN = 0x00000004;
 
+my $t0 = DateTime.now.Instant;
+
 SDL_Init(VIDEO);
 
 my $window = SDL_CreateWindow("Mandelbrot",
@@ -22,8 +24,6 @@ my $render = SDL_CreateRenderer($window, -1, 1);
 SDL_SetRenderDrawColor($render, 0, 0,128, 0);
 SDL_RenderClear($render);
 SDL_RenderPresent($render);
-
-my $t0 = DateTime.now.Instant;
 
 for ( 0..$width) -> int $xcoord {
 
