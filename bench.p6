@@ -3,6 +3,10 @@ use v6;
 use Benchmark;
 use JSON::Fast;
 
+=pod
+can pass number of times to run script on command line - defaults to 3
+=cut
+
 # don't prompt for key press in benchmarks 
 %*ENV{'MBROT_BATCH'}++;
 
