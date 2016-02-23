@@ -3,6 +3,8 @@ use v6;
 use Benchmark;
 use JSON::Fast;
 
+=begin pod
+
 =head1 NAME
 
 bench.p6
@@ -21,7 +23,7 @@ bench.p6
 =head1 NOTE
    Benchmarks are calculated in two ways so figures aren't consistant
 
-=cut
+=end pod
 
 # EVALFILE stomps over MAIN so we can't use it!
 my $times = @*ARGS[0] // 3;
