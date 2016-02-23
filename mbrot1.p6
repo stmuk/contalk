@@ -25,43 +25,43 @@ SDL_SetRenderDrawColor($render, 0, 0,128, 0);
 SDL_RenderClear($render);
 SDL_RenderPresent($render);
 
-for ( 0..$width) -> int $xcoord {
+    for ( 0..$width) -> int $xcoord {
 
-    for ( 0..$height-1) -> int $ycoord {
+        for ( 0..$height-1) -> int $ycoord {
 
-        my $ca = ($xcoord - $hwidth) / $width * $wid + $xcenter;
-        my $cb = ($ycoord - $hheight) / $width * 1 * $wid + $ycenter;
+            my $ca = ($xcoord - $hwidth) / $width * $wid + $xcenter;
+            my $cb = ($ycoord - $hheight) / $width * 1 * $wid + $ycenter;
 
-        my ($res, $i) = mandelbrot($ca + $cb * i);
+            my ($res, $i) = mandelbrot($ca + $cb * i);
 
-        my $hcolor=128;
-        $hcolor=10*$i if $i;
+            my $hcolor=128;
+            $hcolor=10*$i if $i;
 
-        my $color;
-        if !$res.defined {
-            $color = (0,0,0);
-        }  
-        else {
-            if $i < 5 {
-                $color = (0, 0,128);
-            } elsif $i > 5 and $i < 7 {
-                $color =  (0, 0, $hcolor);
-            } elsif $i > 7 and $i < 10 {
-                $color = (0, $hcolor, 0);
-            } else {
-                $color =  ($hcolor,0, 0);
+            my $color;
+            if !$res.defined {
+                $color = (0,0,0);
+            }  
+            else {
+                if $i < 5 {
+                    $color = (0, 0,128);
+                } elsif $i > 5 and $i < 7 {
+                    $color =  (0, 0, $hcolor);
+                } elsif $i > 7 and $i < 10 {
+                    $color = (0, $hcolor, 0);
+                } else {
+                    $color =  ($hcolor,0, 0);
+                }
             }
-        }
-        plot($render, $xcoord, $ycoord, $color);
+            plot($render, $xcoord, $ycoord, $color);
 
-    }                   
+        }                   
 
-}
+    }
 
-SDL_RenderPresent($render);
-say DateTime.now.Instant-$t0 ~ "sec(s)";
-prompt("wait..");
-SDL_Quit();
+    SDL_RenderPresent($render);
+    say DateTime.now.Instant-$t0 ~ "sec(s)";
+    prompt("wait..") unless %*ENV{'MBROT_BATCH'};
+    SDL_Quit();
 
 sub plot($render, $x,$y,$c) {
     my ($c1, $c2, $c3) = $c; # XXX

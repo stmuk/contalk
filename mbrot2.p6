@@ -76,7 +76,7 @@ await do for ( 0..$width) -> int $xcoord {
 
 SDL_RenderPresent($render);
 say DateTime.now.Instant-$t0 ~ "sec(s)";
-prompt("wait..");
+prompt("wait..") unless %*ENV{'MBROT_BATCH'};
 SDL_Quit();
 
 sub plot($render, $x,$y,$c) {
