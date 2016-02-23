@@ -76,8 +76,6 @@ await do for ( 0..$width) -> int $xcoord {
             }
             my $item = ($xcoord, $ycoord, $color);
             $c.send($item);
-            #plot($render, $xcoord, $ycoord, $color);
-
         }                   
     }                   
 
