@@ -1,7 +1,7 @@
 {
-      "mbrot1.p6": "simple non-concurrent script",
-      "mbrot2.p6": "broken concurrent script",
-      "mbrot3.p6": "fixed with lock concurrent script",
-      "mbrot4.p6": "script uses channels"
+      "mbrot1.p6": "non-concurrent",
+      "mbrot2.p6": "broken concurrent ",
+      "mbrot3.p6": "concurrent script with lock",
+      "mbrot4.p6": "concurrent with channel"
 }
 
