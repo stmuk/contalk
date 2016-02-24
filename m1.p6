@@ -9,9 +9,9 @@ if @*ARGS[0] {
     for (1..4) -> $max_threads {
         say "{$max_threads} max thread(s)";
         my ($start,$end,$diff,$avg) = timethis(3, 
-        sub { Mandel1.new.run(:$max_threads)});
+        sub { Mandel1.new.run()});
         say 'arg:' ~ $avg;
     }
 } else {
-    Mandel1.new.run(:max_threads(2));
+    Mandel1.new.run();
 }

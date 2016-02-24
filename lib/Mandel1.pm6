@@ -13,7 +13,7 @@ my (int $xcenter, int $ycenter) = (-1,0);
 
 constant SDL_WINDOW_SHOWN = 0x00000004;
 
-method run(:$max_threads) {
+method run() {
     my $t0 = DateTime.now.Instant;
 
     SDL_Init(VIDEO);
