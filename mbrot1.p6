@@ -1,8 +1,8 @@
 use v6;
 use SDL2::Raw;
 
-my int $width = 800;
-my int $height = 600;
+my int $width = 240;
+my int $height = 192;
 
 my $hwidth = ($width /2).Int;
 my $hheight = ($height/2).Int;
