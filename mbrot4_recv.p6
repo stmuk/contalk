@@ -27,24 +27,22 @@ SDL_SetRenderDrawColor($render, 0, 0,128, 0);
 SDL_RenderClear($render);
 SDL_RenderPresent($render);
 
-#$PROCESS::SCHEDULER=ThreadPoolScheduler.new(initial_threads => 0, max_threads => 3, uncaught_handler => Callable);
-
+$PROCESS::SCHEDULER=ThreadPoolScheduler.new(initial_threads => 0, max_threads => 3, uncaught_handler => Callable);
 
 my $c = Channel.new;
 
 my $plotting = start {
-    my $closed = $c.closed;
     loop {
-        if $c.poll -> $item {
-            my ($xcoord, $ycoord, $color) = $item;
-            plot($render, $xcoord, $ycoord, $color);
-            #say $color;
-        }
-        elsif $closed {
-            last;
-        }
+        last if $c.closed;
+
+        my $item = $c.receive;
+
+        my ($xcoord, $ycoord, $color) = $item;
+
+        plot($render, $xcoord, $ycoord, $color);
     }
 }
+
 
 await do for ( 0..$width) -> int $xcoord {
 
@@ -75,6 +73,7 @@ await do for ( 0..$width) -> int $xcoord {
                 }
             }
             my $item = ($xcoord, $ycoord, $color);
+#            say "here: " ~ $item;
             $c.send($item);
         }                   
     }                   
