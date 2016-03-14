@@ -2,9 +2,9 @@
       "mbrot1.p6": "non-concurrent",
       "mbrot2.p6": "broken concurrent ",
       "mbrot3.p6": "concurrent script with lock",
-      "mbrot4.p6": "concurrent with channel"
-      "mbrot5.p6": "concurrent with supply"
-      "mbrot6.p6": "concurrent with channel recv"
+      "mbrot4.p6": "concurrent with channel",
+      "mbrot5.p6": "concurrent with supply",
+      "mbrot6.p6": "concurrent with channel recv",
       "mbrot7.p6": "concurrent channel by line"
 }
 
