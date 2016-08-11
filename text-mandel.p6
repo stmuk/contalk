@@ -1,5 +1,5 @@
 # ported from mandel.pl (from Rosetta code)
-# this in turn was based on mandel.p6
+# this in turn was based on mandel.rb
 # see 3rdparty
 #
 use v6;
